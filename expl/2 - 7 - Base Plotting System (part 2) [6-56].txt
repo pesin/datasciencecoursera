@@ -1,0 +1,237 @@
+So some of the key base plotting functions
+that you'll use a lot of
+course is the, one, the first is the plot
+function which makes a scatterplot.
+And it can make other types of
+plots depending on whether you're, you're
+plotting a
+special type of object, but for the
+most part you usually want to make
+scatterplots.
+Uh,lines is a, is a function that doesn't
+create a plot but it adds to a plot
+and so sometimes you want to connect a lot
+of dots together so you want to make like
+uh,a time series type of font.
+You want to make, you want to draw
+lines instead of scatterplot lines is
+useful for that.
+points, adds points to a plot, so
+sometimes
+you want to create a plot, and then you
+want to
+add some other points that might represent
+a
+different group or a different subset of
+the population.
+Text as labels, so you want to annotate
+the plot with text labels.
+Title adds so text can be used, I should
+say, to add labels within the plot.
+And the title function is typically used
+to add annotations outside the
+plot, like x and y axis labels, titles,
+subtitles, and things like that.
+Mtext is, the m stands for margins, so
+it's
+used to place text in the margins of the
+plot,
+both the inner and the outer margin, and
+the
+axis function is for use for specifying
+the axis ticks.
+So here is a couple, a couple examples of
+how to
+make plots, and then adding, annotating
+them, here I am plotting
+the wind and ozone that I had before.
+Or scatterplot, but now I'm adding a title
+to the top of the plot.
+So here is the ozone and wind from, in New
+York City.
+In this plot, I'm again doing a
+scatterplot, but I, instead of using the
+title
+function to add the title, I just, I put
+the title directly into the call
+to plot, but then, what I want to do is, I
+want to sub-set, I want to kind of
+plot all of the data points that are in
+the month of May a different color.
+And so what I do is I subset
+the data frame just to include the
+observations from
+month equals 5, and then I use the points
+function to add, to kind of re add points,
+but this time color them blue.
+So you can see in the plot below that the
+the, they're a subset of
+blue points, and those correspond to the,
+to the data points in the month of May.
+Now I could do um,um, more subsets so I
+can plot them different colors.
+Cause here I'm, I'm plotting but the
+um,the initializing a plot but
+then one thing you can see is I added the
+argument type equals
+n and so what type equals n means it
+basically sets up
+the plot and initializes the graphics
+device but it doesn't actually plot
+anything.
+So it doesn't put anything into the
+plotting region.
+It just
+makes a, it sets up all the other stuff in
+the plot without the actual data.
+And then as I, in order to put the data
+into
+the plot, I kind of go through subsets of
+the data frame.
+To add the data from the month of May, and
+add data for the month of not May.
+So, for the month of May, I make that
+color blue, and then, for
+the other months that are not equal to
+May, I just make that color red.
+So, you can see all of the other points
+are red.
+So now, I can kind of accurately see which
+ones are blue, which ones are
+May, without kind of ov, over plotting
+existing points.
+And then as a last touch, I add a legend
+to the top right part of the plot, so I
+can distinguish, which ones are May, which
+ones are not May.
+Finally, one common thing you will
+typically want
+to do is add a regression line or
+a smoother to a plot, so here I've
+just added a regression line to this same
+scatterplot.
+So I first make
+the scatterplot and you notice, I changed
+the default.
+Plotting character pch to be 20.
+So, 20 is a kind of small filled in
+circle.
+And then I fit a linear model to the data,
+which is using the LM function.
+And then I just call the abline function,
+which
+is another annotation function, ah,and I
+just pass it,
+the linear model object and I specify lwd
+equals
+to 2, which is a thicker line than the
+typical default line.
+So abline can interpret the regression
+model output and
+plot a line, plot with a given intercept
+and slope.
+And so here you can see, I've added the
+regression line to the plot.
+Um,and so you can see,and you can see the
+downward trend.
+So, all the previous plots into the single
+plot
+that you might, that would appear on the
+graphics device.
+But sometimes you want to have multiple
+plots on a single device.
+So here I made two plots.
+One plot is ozone versus wind.
+And the other one plot is ozone versus
+solar radiation using the same data set.
+And so in order to do that I can just
+set the par mfrow equals to one row and
+two columns.
+So I They, I can make the two plots side
+by side.
+And then I just call plot twice.
+So every time I call plot, it creates a
+new plot.
+And so the first one will be, the in the
+kind of left hand side and
+the second column plot will be in the
+right hand side and that's how I use
+mfrow.
+Now, you can see that, when I use multiple
+plots, some I have a title
+on each plot so that it tells me kind of
+what the two variables are.
+And the first one's ozone and wind, second
+one's ozone and solar
+radiation, and the third one here is ozone
+and temperature.
+But sometimes you want to have a label
+that's.
+Kind of covering the entire panel of
+plots.
+So that's what the outer margin is for.
+So here in this call of the par I set
+mfrow equal to one row, three columns.
+I set the margins to be a little bit
+smaller than defaults and then I set the
+outer
+margin to be actually bigger than default,
+the b,
+the default for the outer margin is zero
+all around.
+So on the top I want a little extra space
+so I can add the title.
+Ozone and weather in New York City, which
+is
+kind of a title for the entire panel of
+plots.
+And then I call plot three times to make
+the three plots and then
+I use mtext to add the kind of outer title
+to this panel of plots.
+So that was a quick, kind of introduction
+to the base
+plotting system, covers some of the basic
+functions that you would use,
+that you would use including plot and
+a couple of annotation functions like, A
+line.
+And points and things like that.
+So, it's, you can see that by creating.
+And when you create base plots, you are
+kind
+of building up a plot by function by
+function.
+And you kind of end up with a, with many
+live code to create one plot.
+And that's kind of that's how, that's
+typical of lots of base plots.
+Every plots starts with a function that
+initiates
+the plot, so like, plot or hist or box
+plot, and then a series
+of functions which will typically annotate
+the
+plot by adding points, lines, text and
+legends.
+So the, the base plotting system is very
+flexible.
+It, it gives you a lot of control over all
+of the various details of the plot.
+Of course this can be a little bit tedious
+if you need
+to control everything all the time but
+often the defaults are okay.
+And but, the flexibility is quite useful
+if
+you want to make, kind of, publication
+quality plots.
+and, and, and so, it's nice to have that
+de-, that degree
+of control, with all, for things like
+legends, spacing's and all that.
+And so, so that's the, kind of the base
+plotting system.
+We'll talk more about the other plotting
+systems in other lectures.
+

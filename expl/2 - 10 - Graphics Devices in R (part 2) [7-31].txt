@@ -1,0 +1,253 @@
+So when it comes to graphics file devices
+there are basically two broad categories
+of devices.
+One is called vector devices or vector
+formats and the other format is called
+bitmap.
+So vector formats are used, are most
+useful for things like line graphics.
+So, if you have a scatter plot and maybe
+you
+draw a regression line through it these
+are line graphics.
+They don't have, they're not like natural
+scenes
+or images of photographs or things like
+that.
+And so, these types of graphics are
+useful, are, are
+usefully kind of generated using vector
+formats because they resize well.
+So if you have to take the image and kind
+of make it bigger or smaller,
+that it won't get distorted and the, and
+the quality of the graphic won't be, won't
+suffer.
+For example the PDF format is very
+portable, you can
+use it on almost any platform that's out
+there right now.
+And so it is a good format, a general
+purpose vector format.
+Vector formats are typically not very good
+if you have a
+plot that has like, that has a lot, a
+large number
+of points because every single point has
+to be represented by
+a piece of information in the, in the, in
+the file format.
+And so, these files tend to be extremely
+large if you
+plot a lot of different points to a vector
+format file type.
+[INAUDIBLE] scalable vector graphics or
+SVGs, is
+a popular format for web based plots.
+It's useful because it supports things
+like animation and interactivity.
+In the plot and, and almost all web
+browsers recognize the SVG format now.
+Windows metafile is the, is, is the vector
+format that's available only on Windows.
+And you may see older files lying around
+that are in the post script format.
+This is kind of a predecessor to the PDF
+format,
+it's not used very often, but you may see
+it around.
+In the bitmap format file file formats
+there are few commonal ones.
+Probably the most common is PNG which
+stands for portable network graphics.
+The night, and so basically, bitmap
+formats are represent
+plots or images as a series of pixels,
+essentially.
+And so They are, they are very good for
+for [UNKNOWN] that
+had a lot of different points were,
+because they will be very
+efficiently represented in a bitmap
+format.
+the, a PNG is particularly good for things
+like line drawings
+or images with solid colors it uses a
+lossless compression algorithm.
+So that the file sizes tend to be small
+and,
+and pretty much every web browser can read
+PNGs now.
+So if you, so they're good for web, web
+based plots.
+JPEG you might be familiar with.
+If you have a digital camera or something
+like that.
+They're very good for things like natural
+scenes.
+Which don't, which don't
+have solid colors but have lot's of
+gradients of colors.
+It uses a lossy compression algorithm.
+So the file sizes are very efficient, very
+small and they're also good for just
+because it's a bitmap format, it's good
+for plotting, making plots with lots of
+points.
+Bitmap formats in general do not resize
+well, so when you create a plot and
+you try to make it bigger or smaller they
+can distort the quality of the image.
+And so generally speaking, you should not
+resize bitmap
+plots after they've been generated.
+JPEGs of course, can be read by any
+computer or in any web
+browser so they're very useful for that
+kind of, for web based plots.
+they, they're not very good for line
+drawings because if you create a
+line drawing in PD, in JPEG otherwise
+you'll see some aliasing in the lines.
+TIFF is another older format for for
+bitmap files.
+It supports lossless compression and
+it's and it's a very commonly used still.
+Bmp is a negative, a bitmap format for
+Windows.
+And is commonly used for things like
+icons.
+So it's possible to open multiple graphics
+devices.
+And so for example, for example, you might
+want to
+create three or four different plots to
+look at, at
+the same time, and the way to do that is
+to have say three or four different screen
+devices open.
+And so the way you can do this is, is to,
+is you can launch graphic
+devices explicitly you launch the screen
+device for
+example on Mac by calling the quarts
+function multiple
+times and then you'll open multiple
+graphic devices screen devices.
+And so but you can only plot to one device
+at a time.
+And so, the graphics device that you plot
+to
+is the active graphics device and you can
+figure out
+which graphics device is the cur, is the
+active one
+by calling the dev.cur() function or
+dev.cur stands for current.
+And that function will return an integer
+that will tells you which
+graphics device is currently active.
+So, every graphics device is as, is
+assigned an
+integer that's between two and and two and
+up basically.
+So there's no graphics device that has the
+number one.
+So, every graphics device gets an integer
+and you can change which
+graphics device is the active graphics
+device by calling the dev.set function.
+And dev.set takes an integer value which
+will switch
+you to the graphics device that is, that
+corresponds
+with the integer that you're given.
+So you can switch back and forth between
+the
+graphics devices using the dev.set
+function if you need to.
+Finally it's possible to copy plots from
+one device to another.
+And this is probably most commonly used
+when
+you've created a plot on the screen and
+you've
+decided that you really like it and then
+you
+want to, then you want to put it into a
+file.
+And so there's two ways that you can do
+this.
+One is that you can, after you, if you've
+saved the code.
+That can make the plot on the screen.
+You can just open up a file device and
+then cut and paste the code into R and
+then close the file device and then you
+got your plot in a file.
+But, a faster way and sometimes more
+convenient is to
+copy the plot from the screen device to
+the file device.
+And you can use this with the dev.copy
+function which
+just copies plots from one device from any
+device to any
+other device And then, if you specifically
+want a PDF
+file there is a function called
+dev.copy2pdf which will take the
+screen device and copy it directly to a
+PDF file.
+And it's important to note that copying
+the plot is
+not an exact operation so, the, the, the
+plot you
+end up with in the file, may not look
+exactly
+like the copy, the plot you saw on the
+screen.
+So it's a, there may be some adjustment
+you have to do.
+So here is some code that just creates a
+plot on the screen.
+This is the Old Faithful Geyser data that
+comes with R
+and then I want to copy it to a PNG file,
+so I want to create a PNG file on my
+computer
+that contains the plot that I'm looking at
+on my screen.
+So, I can call dev.copy, the first
+argument to dev.copy is the, is the
+function that opens the file device in
+this case, this is the PNG function.
+And then, I just give it a file name,
+which is needed to create the file.
+So, I just call it geiserplot.png.
+And then, once I've copied the plot, I
+still need to close the PNG device with
+dev.off.
+So, once I've call dev.off, there'll,
+there should be a file
+on my computer that, that's going to be in
+a PNG format.
+And I can send it to someone or include it
+in a presentation.
+So, that's a quick summary of the the
+graphics devices in R.
+The basic bottom lines are that every plot
+must be created on a graphics device.
+And usually this is the screen device, but
+and it's useful for exploratory analysis.
+But if you want to preserve a plot or send
+it to
+someone, you have to create a plot in a
+file device.
+And there a variety of different file
+formats that you can use.
+There are vector formats like PDF and SVG,
+and
+therebBitmap formats like PNG and JPEG.
+That you can chose from.
+
